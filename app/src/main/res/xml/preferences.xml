@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <EditTextPreference
+        app:defaultValue="10"
+        android:selectAllOnFocus= "true"
+        android:singleLine="true"
+        android:inputType="number"
+        app:title="Cache duration in seconds"
+        app:key="pref_cache_duration"/>
+
+    <CheckBoxPreference
+        app:key ="pref_sync"
+        app:title="@string/sync_pref"
+        app:summary="@string/sync_pref_summary"
+        app:defaultValue="true"/>
+
+    <ListPreference
+        app:dependency="pref_sync"
+        app:key="pref_sync_connection_type"
+        app:title="@string/pref_syncConnectionType"
+        app:entries="@array/pref_syncConnectionType_entries"
+        app:entryValues="@array/pref_syncConnectionType_values"
+        app:defaultValue="@string/pref_syncConnectionType_default_value"
+        app:summary="@string/pref_syncConnectionType_summary"/>
+
+    <ListPreference
+        app:title="@string/pref_screen_mode_title"
+        app:summary="@string/pref_screen_mode_summary"
+        app:key="@string/pref_screen_mode_key"
+        app:entries="@array/pref_screen_mode_entries"
+        app:entryValues="@array/pref_screen_mode_values"
+        app:defaultValue="@string/system_default"
+        app:positiveButtonText="@null"
+        app:negativeButtonText="@null"/>
+
+
+
+
+    <PreferenceCategory
+        app:key="notifications_category"
+        app:title="Notifications"
+        >
+        <SwitchPreferenceCompat
+            app:key ="notifications"
+            app:title="Enable message notifications"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="help_category"
+        app:title="Help">
+        <Preference
+            app:key="feedback"
+            app:summary="Report Technical issues or suggest new features"
+            app:title="Send Feedback"/>
+    </PreferenceCategory>
+
+    <Preference
+        app:key="key_sync"
+        app:title="Sync"
+        app:fragment="com.android.preferences.SyncSettingFragment"/>
+
+    <Preference
+        app:key="key_google"
+        app:title="Google"
+   />
+
+
+</PreferenceScreen>
